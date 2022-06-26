@@ -1,4 +1,4 @@
-package com.app.prefeitura.entities.avaliacaoAcoes;
+package com.app.prefeitura.entities.AvaliacaoAcoes;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -6,7 +6,7 @@ import java.util.Date;
 
 @Entity
 @Table(name = "cliente")
-public class acoesPrefeitura implements Serializable {
+public class AcoesPrefeitura implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
