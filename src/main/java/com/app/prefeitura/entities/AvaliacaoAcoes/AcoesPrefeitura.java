@@ -1,4 +1,4 @@
-package com.app.prefeitura.entities.avaliacaoAcoes;
+package com.app.prefeitura.entities.AvaliacaoAcoes;
 
 import javax.persistence.*;
 import java.io.Serializable;
