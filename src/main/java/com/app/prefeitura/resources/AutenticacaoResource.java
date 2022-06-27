@@ -6,7 +6,7 @@
 package com.app.prefeitura.resources;
 
 import com.app.prefeitura.config.TokenService;
-import com.app.prefeitura.dto.TokenDTO;
+import com.app.prefeitura.dto.output.TokenDTO;
 import com.app.prefeitura.form.LoginForm;
 import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;

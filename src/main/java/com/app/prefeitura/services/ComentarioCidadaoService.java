@@ -1,7 +1,7 @@
 package com.app.prefeitura.services;
 
-import com.app.prefeitura.dto.ComentarioCidadaoDTO;
-import com.app.prefeitura.dto.FotoDTO;
+import com.app.prefeitura.dto.output.ComentarioCidadaoDTO;
+import com.app.prefeitura.dto.output.FotoDTO;
 import com.app.prefeitura.entities.participacaoCidadao.Arquivo;
 import com.app.prefeitura.entities.participacaoCidadao.ComentarioCidadao;
 import com.app.prefeitura.repositories.ArquivoRepository;

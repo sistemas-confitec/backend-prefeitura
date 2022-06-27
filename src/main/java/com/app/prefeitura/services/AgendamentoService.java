@@ -1,13 +1,13 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.app.prefeitura.services;
 
-import com.app.prefeitura.dto.AgendamentoDTO;
+import com.app.prefeitura.dto.input.AgendamentoResponseDTO;
+import com.app.prefeitura.dto.output.AgendamentoDTO;
 import com.app.prefeitura.entities.agendamento.Agendamento;
+import com.app.prefeitura.entities.agendamento.Secretaria;
+import com.app.prefeitura.entities.agendamento.TipoServico;
 import com.app.prefeitura.repositories.AgendamentoRepository;
+import com.app.prefeitura.repositories.SecretariaRepository;
+import com.app.prefeitura.repositories.TipoServicoRepository;
 import com.app.prefeitura.services.exceptions.DatabaseException;
 import com.app.prefeitura.services.exceptions.ResourceNotFoundException;
 import java.util.Optional;
@@ -30,6 +30,12 @@ public class AgendamentoService {
     @Autowired
     private AgendamentoRepository repository;
 
+    @Autowired
+    private SecretariaRepository recretariaSecretaria;
+
+    @Autowired
+    private TipoServicoRepository recretariaTipoServico;
+
     @Transactional(readOnly = true)
     public Page<AgendamentoDTO> findAllPaged(PageRequest pageResquest) {
         Page<Agendamento> list = repository.findAll(pageResquest);
@@ -44,37 +50,57 @@ public class AgendamentoService {
     }
 
     @Transactional
-    public AgendamentoDTO insert(AgendamentoDTO dto) {
+    public AgendamentoDTO insert(AgendamentoResponseDTO dto) {
         Agendamento entity = new Agendamento();
 
-        entity.setSecretaria(dto.getSecretaria());
-        entity.setTipoServico(dto.getTipoServico());
+        Secretaria secretaria = recretariaSecretaria.findById(dto.getSecretaria()).get();
+        TipoServico tipoServico = recretariaTipoServico.findById(dto.getTipoServico()).get();
+
+        entity.setSecretaria(secretaria);
+        entity.setTipoServico(tipoServico);
         entity.setData(dto.getData());
+        entity.setHora(dto.getHora());
         entity = repository.save(entity);
         return new AgendamentoDTO(entity);
     }
 
     @Transactional
-    public AgendamentoDTO update(Long id, AgendamentoDTO dto) {
+    public AgendamentoDTO update(Long id, AgendamentoResponseDTO dto) {
         try {
-            Agendamento entity = repository.getById(id);
-            entity.setSecretaria(dto.getSecretaria());
-            entity.setTipoServico(dto.getTipoServico());
-            entity.setData(dto.getData());
+            Agendamento entity = repository.findById(id).get();
+
+            if (dto.getSecretaria() != null) {
+                Secretaria secretaria = recretariaSecretaria.findById(dto.getSecretaria()).get();
+                entity.setSecretaria(secretaria);
+            }
+
+            if (dto.getTipoServico() != null) {
+                TipoServico tipoServico = recretariaTipoServico.findById(dto.getTipoServico()).get();
+                entity.setTipoServico(tipoServico);
+            }
+            
+            if (dto.getData() != null) {
+                entity.setData(dto.getData());
+            }
+
+            if (dto.getHora() != null) {
+                entity.setHora(dto.getHora());
+            }
+
             entity = repository.save(entity);
             return new AgendamentoDTO(entity);
-        }catch(EntityNotFoundException e){
+        } catch (EntityNotFoundException e) {
             throw new ResourceNotFoundException("Id not found" + id);
         }
     }
-    
-    public void delete(Long id){
-        try{
+
+    public void delete(Long id) {
+        try {
             repository.deleteById(id);
-        }catch(EmptyResultDataAccessException e) {
-                throw new ResourceNotFoundException("If not found" + id);
-        }catch(DataIntegrityViolationException e) {
-                throw new DatabaseException("Integrity violation");
+        } catch (EmptyResultDataAccessException e) {
+            throw new ResourceNotFoundException("If not found" + id);
+        } catch (DataIntegrityViolationException e) {
+            throw new DatabaseException("Integrity violation");
         }
     }
 

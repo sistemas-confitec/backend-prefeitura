@@ -1,6 +1,6 @@
 package com.app.prefeitura.services;
 
-import com.app.prefeitura.dto.SecretariaDTO;
+import com.app.prefeitura.dto.output.SecretariaDTO;
 import com.app.prefeitura.entities.agendamento.Secretaria;
 import com.app.prefeitura.repositories.SecretariaRepository;
 import com.app.prefeitura.services.exceptions.DatabaseException;

@@ -5,7 +5,7 @@
  */
 package com.app.prefeitura.resources;
 
-import com.app.prefeitura.dto.SecretariaDTO;
+import com.app.prefeitura.dto.output.SecretariaDTO;
 import com.app.prefeitura.entities.agendamento.Secretaria;
 import com.app.prefeitura.services.SecretariaService;
 import java.net.URI;

@@ -5,7 +5,7 @@
  */
 package com.app.prefeitura.resources;
 
-import com.app.prefeitura.dto.TipoServicoDTO;
+import com.app.prefeitura.dto.output.TipoServicoDTO;
 import com.app.prefeitura.entities.agendamento.TipoServico;
 import com.app.prefeitura.services.TipoServicoService;
 import java.net.URI;

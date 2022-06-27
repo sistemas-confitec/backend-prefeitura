@@ -5,7 +5,7 @@
  */
 package com.app.prefeitura.entities.agendamento;
 
-import com.app.prefeitura.dto.TipoServicoDTO;
+import com.app.prefeitura.dto.output.TipoServicoDTO;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.io.Serializable;
 import java.util.ArrayList;

@@ -1,11 +1,6 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.app.prefeitura.entities.agendamento;
 
-import com.app.prefeitura.dto.SecretariaDTO;
+import com.app.prefeitura.dto.output.SecretariaDTO;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -31,6 +26,7 @@ public class Secretaria implements Serializable{
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String nome;
+    private String descricao;
     
     @JsonIgnore
     @OneToMany(mappedBy = "secretaria")
@@ -39,13 +35,15 @@ public class Secretaria implements Serializable{
     public Secretaria() {
     }
 
-    public Secretaria(Long id, String nome) {
+    public Secretaria(Long id, String nome, String descricao) {
         this.id = id;
         this.nome = nome;
+        this.descricao = descricao;
     }
     
     public Secretaria(SecretariaDTO dto) {
         this.nome = dto.getNome();
+        this.descricao = dto.getDescricao();
     }    
 
     public Long getId() {
@@ -58,6 +56,14 @@ public class Secretaria implements Serializable{
 
     public String getNome() {
         return nome;
+    }
+    
+    public String getDescricao() {
+        return descricao;
+    }
+
+    public void setDescricao(String descricao) {
+        this.descricao = descricao;
     }
 
     public void setNome(String nome) {

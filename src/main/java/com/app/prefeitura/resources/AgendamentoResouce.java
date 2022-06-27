@@ -1,6 +1,7 @@
 package com.app.prefeitura.resources;
 
-import com.app.prefeitura.dto.AgendamentoDTO;
+import com.app.prefeitura.dto.input.AgendamentoResponseDTO;
+import com.app.prefeitura.dto.output.AgendamentoDTO;
 import com.app.prefeitura.services.AgendamentoService;
 import java.net.URI;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -48,16 +49,16 @@ public class AgendamentoResouce {
     }
 
     @PostMapping
-    public ResponseEntity<AgendamentoDTO> insert(@RequestBody AgendamentoDTO dto) {
-        dto = service.insert(dto);
+    public ResponseEntity<AgendamentoDTO> insert(@RequestBody AgendamentoResponseDTO dtoResponse) {
+        AgendamentoDTO dto = service.insert(dtoResponse);
         URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(dto.getId()).toUri();
 
         return ResponseEntity.created(uri).body(dto);
     }
 
     @PutMapping(value = "/{id}")
-    public ResponseEntity<AgendamentoDTO> update(@PathVariable Long id, @RequestBody AgendamentoDTO dto) {
-        dto = service.update(id, dto);
+    public ResponseEntity<AgendamentoDTO> update(@PathVariable Long id, @RequestBody AgendamentoResponseDTO dtoResponse) {
+        AgendamentoDTO dto = service.update(id, dtoResponse);
         return ResponseEntity.ok().body(dto);
     }
 

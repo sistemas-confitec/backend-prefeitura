@@ -1,6 +1,6 @@
 package com.app.prefeitura.services;
 
-import com.app.prefeitura.dto.TipoServicoDTO;
+import com.app.prefeitura.dto.output.TipoServicoDTO;
 import com.app.prefeitura.entities.agendamento.TipoServico;
 import com.app.prefeitura.repositories.TipoServicoRepository;
 import com.app.prefeitura.services.exceptions.DatabaseException;

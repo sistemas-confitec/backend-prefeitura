@@ -7,6 +7,7 @@ package com.app.prefeitura.entities.agendamento;
 
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.time.LocalTime;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -40,6 +41,8 @@ public class Agendamento implements Serializable{
     
     @Column(name="data")
     private LocalDate data;
+    @Column(name="hora")
+    private LocalTime hora;
 
     public Agendamento() {
     }
@@ -75,7 +78,13 @@ public class Agendamento implements Serializable{
     public void setData(LocalDate data) {
         this.data = data;
     }
-    
-    
+
+    public LocalTime getHora() {
+        return hora;
+    }
+
+    public void setHora(LocalTime hora) {
+        this.hora = hora;
+    }
     
 }

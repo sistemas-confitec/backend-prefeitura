@@ -1,6 +1,6 @@
 package com.app.prefeitura.resources;
 
-import com.app.prefeitura.dto.ComentarioCidadaoDTO;
+import com.app.prefeitura.dto.output.ComentarioCidadaoDTO;
 import com.app.prefeitura.entities.participacaoCidadao.ComentarioCidadao;
 import com.app.prefeitura.services.ComentarioCidadaoService;
 import java.io.IOException;

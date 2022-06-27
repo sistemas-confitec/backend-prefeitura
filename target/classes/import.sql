@@ -5,12 +5,12 @@ INSERT INTO tb_client (name) VALUES ('Tomas');
 INSERT INTO tb_client (name) VALUES ('Ana');
 INSERT INTO tb_client (name) VALUES ('Marcos');
 
-INSERT INTO tb_secretaria (nome)  VALUES ('Gabinete do Prefeito')
-INSERT INTO tb_secretaria (nome)  VALUES ('Secretaria de Saúde')
-INSERT INTO tb_secretaria (nome)  VALUES ('Secretaria de Educação')
-INSERT INTO tb_secretaria (nome)  VALUES ('Secretaria de Meio Ambiente')
-INSERT INTO tb_secretaria (nome)  VALUES ('Secretaria de Infraestrutura')
-INSERT INTO tb_secretaria (nome)  VALUES ('Secretaria de Assistência Social')
+INSERT INTO tb_secretaria (nome, descricao)  VALUES ('Gabinete do Prefeito', 'TEXTO 1')
+INSERT INTO tb_secretaria (nome, descricao)  VALUES ('Secretaria de Saúde', 'TEXTO 2')
+INSERT INTO tb_secretaria (nome, descricao)  VALUES ('Secretaria de Educação', 'TEXTO 3')
+INSERT INTO tb_secretaria (nome, descricao)  VALUES ('Secretaria de Meio Ambiente', 'TEXTO 4')
+INSERT INTO tb_secretaria (nome, descricao)  VALUES ('Secretaria de Infraestrutura', 'TEXTO 5')
+INSERT INTO tb_secretaria (nome, descricao)  VALUES ('Secretaria de Assistência Social', 'TEXTO 6')
 
 INSERT INTO tb_tipo_servico (nome) VALUES ('Consulta')
 INSERT INTO tb_tipo_servico (nome) VALUES ('Exame')
