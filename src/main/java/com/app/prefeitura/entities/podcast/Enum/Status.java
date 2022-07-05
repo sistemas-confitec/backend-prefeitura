@@ -1,4 +1,4 @@
-package com.app.prefeitura.entities.podcast;
+package com.app.prefeitura.entities.podcast.Enum;
 
 public enum Status {
 
