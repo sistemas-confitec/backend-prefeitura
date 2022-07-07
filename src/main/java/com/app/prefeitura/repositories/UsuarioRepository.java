@@ -1,6 +1,6 @@
 package com.app.prefeitura.repositories;
 
-import com.app.prefeitura.entities.Admin.Usuario;
+import com.app.prefeitura.entities.admin.Usuario;
 import java.util.Optional;
 import org.springframework.data.repository.CrudRepository;
 

@@ -31,10 +31,10 @@ public class AgendamentoService {
     private AgendamentoRepository repository;
 
     @Autowired
-    private SecretariaRepository recretariaSecretaria;
+    private SecretariaRepository repositorySecretaria;
 
     @Autowired
-    private TipoServicoRepository recretariaTipoServico;
+    private TipoServicoRepository repositoryTipoServico;
 
     @Transactional(readOnly = true)
     public Page<AgendamentoDTO> findAllPaged(PageRequest pageResquest) {
@@ -53,8 +53,8 @@ public class AgendamentoService {
     public AgendamentoDTO insert(AgendamentoResponseDTO dto) {
         Agendamento entity = new Agendamento();
 
-        Secretaria secretaria = recretariaSecretaria.findById(dto.getSecretaria()).get();
-        TipoServico tipoServico = recretariaTipoServico.findById(dto.getTipoServico()).get();
+        Secretaria secretaria = repositorySecretaria.findById(dto.getSecretaria()).get();
+        TipoServico tipoServico = repositoryTipoServico.findById(dto.getTipoServico()).get();
 
         entity.setSecretaria(secretaria);
         entity.setTipoServico(tipoServico);
@@ -69,26 +69,19 @@ public class AgendamentoService {
         try {
             Agendamento entity = repository.findById(id).get();
 
-            if (dto.getSecretaria() != null) {
-                Secretaria secretaria = recretariaSecretaria.findById(dto.getSecretaria()).get();
-                entity.setSecretaria(secretaria);
-            }
+            Secretaria secretaria = repositorySecretaria.findById(dto.getSecretaria()).get();
+            entity.setSecretaria(secretaria);
 
-            if (dto.getTipoServico() != null) {
-                TipoServico tipoServico = recretariaTipoServico.findById(dto.getTipoServico()).get();
-                entity.setTipoServico(tipoServico);
-            }
-            
-            if (dto.getData() != null) {
-                entity.setData(dto.getData());
-            }
+            TipoServico tipoServico = repositoryTipoServico.findById(dto.getTipoServico()).get();
+            entity.setTipoServico(tipoServico);
 
-            if (dto.getHora() != null) {
-                entity.setHora(dto.getHora());
-            }
+            entity.setData(dto.getData());
+            entity.setHora(dto.getHora());
 
             entity = repository.save(entity);
+            
             return new AgendamentoDTO(entity);
+            
         } catch (EntityNotFoundException e) {
             throw new ResourceNotFoundException("Id not found" + id);
         }

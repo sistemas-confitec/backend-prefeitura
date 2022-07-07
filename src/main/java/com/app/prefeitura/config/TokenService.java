@@ -1,6 +1,6 @@
 package com.app.prefeitura.config;
 
-import com.app.prefeitura.entities.Admin.Usuario;
+import com.app.prefeitura.entities.admin.Usuario;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
