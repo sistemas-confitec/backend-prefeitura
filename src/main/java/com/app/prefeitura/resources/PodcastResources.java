@@ -23,7 +23,7 @@ public class PodcastResources {
     @Autowired
     private PodcastService podcastService;
 
-    @Autowired
+//    @Autowired(required=true)
     private ModelMapper modelMapper;
 
     @PostMapping
