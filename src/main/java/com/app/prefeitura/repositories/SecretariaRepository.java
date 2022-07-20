@@ -1,6 +1,6 @@
 package com.app.prefeitura.repositories;
 
-import com.app.prefeitura.entities.agendamento.Secretaria;
+import com.app.prefeitura.entities.Secretaria;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

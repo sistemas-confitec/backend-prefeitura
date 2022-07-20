@@ -4,7 +4,7 @@
  */
 package com.app.prefeitura.repositories;
 
-import com.app.prefeitura.entities.participacaoCidadao.ComentarioCidadao;
+import com.app.prefeitura.entities.ComentarioCidadao;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 

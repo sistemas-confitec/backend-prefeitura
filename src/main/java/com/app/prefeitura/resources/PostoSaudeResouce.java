@@ -1,8 +1,8 @@
 package com.app.prefeitura.resources;
 
-import com.app.prefeitura.dto.input.UnidadeSaudeResponseDTO;
-import com.app.prefeitura.dto.output.UnidadeSaudeDTO;
-import com.app.prefeitura.entities.postosSaude.UnidadeSaude;
+import com.app.prefeitura.dto.UnidadeSaudeResponseDTO;
+import com.app.prefeitura.dto.UnidadeSaudeDTO;
+import com.app.prefeitura.entities.UnidadeSaude;
 import com.app.prefeitura.services.PostoSaudeService;
 import java.io.Serializable;
 import java.net.URI;

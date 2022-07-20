@@ -5,7 +5,7 @@
  */
 package com.app.prefeitura.config;
 
-import com.app.prefeitura.entities.admin.Usuario;
+import com.app.prefeitura.entities.Usuario;
 import com.app.prefeitura.repositories.UsuarioRepository;
 import java.io.IOException;
 import javax.servlet.FilterChain;

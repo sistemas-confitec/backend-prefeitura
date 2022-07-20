@@ -1,13 +1,9 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.app.prefeitura.resources;
 
-import com.app.prefeitura.dto.SecretariaDTO;
-import com.app.prefeitura.entities.Secretaria;
-import com.app.prefeitura.services.SecretariaService;
+import com.app.prefeitura.dto.ServicoDTO;
+import com.app.prefeitura.dto.TipoServicoResponseDTO;
+import com.app.prefeitura.entities.Servico;
+import com.app.prefeitura.services.ServicoService;
 import java.net.URI;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,42 +23,49 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
  * @author Robson
  */
 @RestController
-@RequestMapping(value = "/secretarias")
-public class SecretariaResouce {
-
+@RequestMapping(value = "/servicos")
+public class ServicoResouce {
+    
     @Autowired
-    private SecretariaService service;
-
+    private ServicoService service;
+    
     @GetMapping
-    public ResponseEntity<List<Secretaria>> findAll(){
-           List<Secretaria> list = service.findAll();
-           return ResponseEntity.ok().body(list);
+    public ResponseEntity<List<Servico>> findAll() {
+        List<Servico> list = service.findAll();
+        return ResponseEntity.ok().body(list);
     }
     
     @GetMapping(value = "/{id}")
-    public ResponseEntity<Secretaria> findById(@PathVariable Long id) {
-        Secretaria entity = service.findById(id);
+    public ResponseEntity<Servico> findById(@PathVariable Long id){
+        Servico entity = service.findById(id);
         return ResponseEntity.ok().body(entity);
     }
     
-    @PostMapping()
-    public ResponseEntity<SecretariaDTO> insert(@RequestBody SecretariaDTO dto){
-        dto = service.insert(dto);
-        URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(dto.getId()).toUri();
+    @GetMapping(value = "/secretaria/{id}")
+    public ResponseEntity<List<ServicoDTO>> findBySecretaria(@PathVariable Long id){
+        List<ServicoDTO> list = service.findBySecretaria(id);
+        return ResponseEntity.ok().body(list);
+    }
     
+    @PostMapping()
+    public ResponseEntity<ServicoDTO> insert(@RequestBody TipoServicoResponseDTO dtoResponse){
+        ServicoDTO dto = service.insert(dtoResponse);
+        URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(dto.getId()).toUri();
         return ResponseEntity.created(uri).body(dto);
     }
     
     @PutMapping(value = "/{id}")
-    public ResponseEntity<SecretariaDTO> update(@PathVariable Long id, @RequestBody SecretariaDTO dto) {
-        dto = service.update(id, dto);
+    public ResponseEntity<ServicoDTO> update(@PathVariable Long id, @RequestBody TipoServicoResponseDTO dtoResponse){
+        ServicoDTO dto = service.update(id, dtoResponse);
         return ResponseEntity.ok().body(dto);
     }
-    
+
     @DeleteMapping(value = "/{id}")
-    public ResponseEntity<SecretariaDTO> delete(@PathVariable Long id) {
+    public ResponseEntity<ServicoDTO> delete(@PathVariable Long id){
         service.delete(id);
         return ResponseEntity.noContent().build();
     }
+    
+    
     
 }

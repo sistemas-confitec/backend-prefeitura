@@ -1,15 +1,15 @@
 package com.app.prefeitura.services;
 
-import com.app.prefeitura.dto.input.AgendamentoResponseDTO;
-import com.app.prefeitura.dto.output.AgendamentoDTO;
-import com.app.prefeitura.entities.agendamento.Agendamento;
-import com.app.prefeitura.entities.agendamento.Secretaria;
-import com.app.prefeitura.entities.agendamento.TipoServico;
+import com.app.prefeitura.dto.AgendamentoResponseDTO;
+import com.app.prefeitura.dto.AgendamentoDTO;
+import com.app.prefeitura.entities.Agendamento;
+import com.app.prefeitura.entities.Secretaria;
+import com.app.prefeitura.entities.Servico;
 import com.app.prefeitura.repositories.AgendamentoRepository;
 import com.app.prefeitura.repositories.SecretariaRepository;
-import com.app.prefeitura.repositories.TipoServicoRepository;
 import com.app.prefeitura.services.exceptions.DatabaseException;
 import com.app.prefeitura.services.exceptions.ResourceNotFoundException;
+import java.util.List;
 import java.util.Optional;
 import javax.persistence.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,6 +19,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import com.app.prefeitura.repositories.ServicoRepository;
 
 /**
  *
@@ -34,7 +35,7 @@ public class AgendamentoService {
     private SecretariaRepository repositorySecretaria;
 
     @Autowired
-    private TipoServicoRepository repositoryTipoServico;
+    private ServicoRepository repositoryServico;
 
     @Transactional(readOnly = true)
     public Page<AgendamentoDTO> findAllPaged(PageRequest pageResquest) {
@@ -54,10 +55,10 @@ public class AgendamentoService {
         Agendamento entity = new Agendamento();
 
         Secretaria secretaria = repositorySecretaria.findById(dto.getSecretaria()).get();
-        TipoServico tipoServico = repositoryTipoServico.findById(dto.getTipoServico()).get();
+        Servico tipoServico = repositoryServico.findById(dto.getServico()).get();
 
         entity.setSecretaria(secretaria);
-        entity.setTipoServico(tipoServico);
+        entity.setServico(tipoServico);
         entity.setData(dto.getData());
         entity.setHora(dto.getHora());
         entity = repository.save(entity);
@@ -72,8 +73,8 @@ public class AgendamentoService {
             Secretaria secretaria = repositorySecretaria.findById(dto.getSecretaria()).get();
             entity.setSecretaria(secretaria);
 
-            TipoServico tipoServico = repositoryTipoServico.findById(dto.getTipoServico()).get();
-            entity.setTipoServico(tipoServico);
+            Servico tipoServico = repositoryServico.findById(dto.getServico()).get();
+            entity.setServico(tipoServico);
 
             entity.setData(dto.getData());
             entity.setHora(dto.getHora());
@@ -96,5 +97,8 @@ public class AgendamentoService {
             throw new DatabaseException("Integrity violation");
         }
     }
+    
+    
+    
 
 }

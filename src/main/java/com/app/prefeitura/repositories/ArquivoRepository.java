@@ -1,6 +1,6 @@
 package com.app.prefeitura.repositories;
 
-import com.app.prefeitura.entities.participacaoCidadao.Arquivo;
+import com.app.prefeitura.entities.Arquivo;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 /**

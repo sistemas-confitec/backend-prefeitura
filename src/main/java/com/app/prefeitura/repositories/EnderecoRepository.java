@@ -4,7 +4,7 @@
  */
 package com.app.prefeitura.repositories;
 
-import com.app.prefeitura.entities.postosSaude.Endereco;
+import com.app.prefeitura.entities.Endereco;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 /**

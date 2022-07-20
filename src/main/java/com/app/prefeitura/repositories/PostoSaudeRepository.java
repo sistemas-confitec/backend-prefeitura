@@ -1,6 +1,6 @@
 package com.app.prefeitura.repositories;
 
-import com.app.prefeitura.entities.postosSaude.UnidadeSaude;
+import com.app.prefeitura.entities.UnidadeSaude;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 /**

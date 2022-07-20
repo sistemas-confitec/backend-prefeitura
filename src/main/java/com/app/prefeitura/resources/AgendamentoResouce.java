@@ -1,7 +1,7 @@
 package com.app.prefeitura.resources;
 
-import com.app.prefeitura.dto.input.AgendamentoResponseDTO;
-import com.app.prefeitura.dto.output.AgendamentoDTO;
+import com.app.prefeitura.dto.AgendamentoResponseDTO;
+import com.app.prefeitura.dto.AgendamentoDTO;
 import com.app.prefeitura.services.AgendamentoService;
 import java.net.URI;
 import org.springframework.beans.factory.annotation.Autowired;

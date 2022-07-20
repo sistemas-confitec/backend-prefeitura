@@ -1,7 +1,9 @@
 package com.app.prefeitura.services;
 
-import com.app.prefeitura.dto.output.SecretariaDTO;
-import com.app.prefeitura.entities.agendamento.Secretaria;
+import com.app.prefeitura.dto.SecretariaDTO;
+import com.app.prefeitura.dto.ServicoDTO;
+import com.app.prefeitura.entities.Secretaria;
+import com.app.prefeitura.entities.Servico;
 import com.app.prefeitura.repositories.SecretariaRepository;
 import com.app.prefeitura.services.exceptions.DatabaseException;
 import com.app.prefeitura.services.exceptions.ResourceNotFoundException;
@@ -34,6 +36,8 @@ public class SecretariaService {
         return entity;
     }
 
+    
+
     @Transactional
     public SecretariaDTO insert(SecretariaDTO secretaria) {
         Secretaria entity = new Secretaria(secretaria);
@@ -43,12 +47,13 @@ public class SecretariaService {
 
     @Transactional
     public SecretariaDTO update(Long id, SecretariaDTO secretaria) {
-        try{
-        Secretaria entity = repository.getById(id);
-        entity.setNome(secretaria.getNome());
-        repository.save(entity);
-        return new SecretariaDTO(entity);
-        }catch(EntityNotFoundException e){
+        try {
+            Secretaria entity = repository.findById(id).get();
+            entity.setNome(secretaria.getNome());
+            entity.setDescricao(secretaria.getDescricao());
+            repository.save(entity);
+            return new SecretariaDTO(entity);
+        } catch (EntityNotFoundException e) {
             throw new ResourceNotFoundException("Id not found " + id);
         }
     }

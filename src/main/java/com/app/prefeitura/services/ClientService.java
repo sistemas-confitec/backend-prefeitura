@@ -12,7 +12,7 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.app.prefeitura.dto.output.ClientDTO;
+import com.app.prefeitura.dto.ClientDTO;
 import com.app.prefeitura.entities.Client;
 import com.app.prefeitura.repositories.ClientRepository;
 import com.app.prefeitura.services.exceptions.DatabaseException;

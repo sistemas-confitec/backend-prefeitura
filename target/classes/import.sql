@@ -12,11 +12,11 @@ INSERT INTO tb_secretaria (nome, descricao)  VALUES ('Secretaria de Meio Ambient
 INSERT INTO tb_secretaria (nome, descricao)  VALUES ('Secretaria de Infraestrutura', 'TEXTO 5')
 INSERT INTO tb_secretaria (nome, descricao)  VALUES ('Secretaria de Assistência Social', 'TEXTO 6')
 
-INSERT INTO tb_tipo_servico (nome) VALUES ('Consulta')
-INSERT INTO tb_tipo_servico (nome) VALUES ('Exame')
+INSERT INTO tb_servico (nome, descricao, id_secretaria) VALUES ('Consulta', 'TESTE 1' , 1 )
+INSERT INTO tb_servico (nome, descricao, id_secretaria) VALUES ('Exame', 'TESTE 1', 2)
 
-INSERT INTO tb_agendamento (id_secretaria, tipo_servico, data, hora)  VALUES (1, 1, now(), now())
-INSERT INTO tb_agendamento (id_secretaria, tipo_servico, data, hora)  VALUES (2, 2, now(), now())
+INSERT INTO tb_agendamento (id_secretaria, id_servico, data, hora)  VALUES (1, 1, now(), now())
+INSERT INTO tb_agendamento (id_secretaria, id_servico, data, hora)  VALUES (2, 2, now(), now())
 
 INSERT INTO tb_comentario_cidadao (comentario) VALUES ('Comentario 1')
 INSERT INTO tb_comentario_cidadao (comentario) VALUES ('Comentario 2')

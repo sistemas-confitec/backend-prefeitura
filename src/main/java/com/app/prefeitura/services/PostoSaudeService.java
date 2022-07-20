@@ -1,9 +1,9 @@
 package com.app.prefeitura.services;
 
-import com.app.prefeitura.dto.input.UnidadeSaudeResponseDTO;
-import com.app.prefeitura.dto.output.UnidadeSaudeDTO;
-import com.app.prefeitura.entities.postosSaude.Endereco;
-import com.app.prefeitura.entities.postosSaude.UnidadeSaude;
+import com.app.prefeitura.dto.UnidadeSaudeResponseDTO;
+import com.app.prefeitura.dto.UnidadeSaudeDTO;
+import com.app.prefeitura.entities.Endereco;
+import com.app.prefeitura.entities.UnidadeSaude;
 import com.app.prefeitura.repositories.EnderecoRepository;
 import com.app.prefeitura.repositories.PostoSaudeRepository;
 import com.app.prefeitura.services.exceptions.DatabaseException;
