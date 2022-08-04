@@ -30,7 +30,7 @@ public class Servico implements Serializable {
     
     @ManyToOne
     @JoinColumn(name="id_secretaria", referencedColumnName = "id")
-    private Secretaria idSecretaria;
+    private Secretaria secretaria;
 
     public Servico() {
     }
@@ -73,12 +73,12 @@ public class Servico implements Serializable {
         this.descricao = descricao;
     }
 
-    public Secretaria getIdSecretaria() {
-        return idSecretaria;
+    public Secretaria getSecretaria() {
+        return secretaria;
     }
 
-    public void setIdSecretaria(Secretaria idSecretaria) {
-        this.idSecretaria = idSecretaria;
+    public void setSecretaria(Secretaria idSecretaria) {
+        this.secretaria = idSecretaria;
     }
     
 

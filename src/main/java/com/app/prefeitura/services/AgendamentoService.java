@@ -9,7 +9,6 @@ import com.app.prefeitura.repositories.AgendamentoRepository;
 import com.app.prefeitura.repositories.SecretariaRepository;
 import com.app.prefeitura.services.exceptions.DatabaseException;
 import com.app.prefeitura.services.exceptions.ResourceNotFoundException;
-import java.util.List;
 import java.util.Optional;
 import javax.persistence.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;

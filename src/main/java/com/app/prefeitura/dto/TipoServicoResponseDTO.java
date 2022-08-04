@@ -13,21 +13,21 @@ public class TipoServicoResponseDTO implements Serializable {
     private Long id;
     private String nome;
     private String descricao;
-    private Long idSecretaria;
+    private Long secretaria;
     
     public TipoServicoResponseDTO() {
     }
 
-    public TipoServicoResponseDTO(String nome, String descricao, Long idSecretaria) {
+    public TipoServicoResponseDTO(String nome, String descricao, Long secretaria) {
         this.nome = nome;
         this.descricao = descricao;
-        this.idSecretaria = idSecretaria;
+        this.secretaria = secretaria;
     }
 
     public TipoServicoResponseDTO(Servico entity) {
         this.id = entity.getId();
         this.nome = entity.getNome();
-        this.idSecretaria = entity.getIdSecretaria().getId();
+        this.secretaria = entity.getSecretaria().getId();
     }
 
     public Long getId() {
@@ -54,12 +54,12 @@ public class TipoServicoResponseDTO implements Serializable {
         this.descricao = descricao;
     }
 
-    public Long getIdSecretaria() {
-        return idSecretaria;
+    public Long getSecretaria() {
+        return secretaria;
     }
 
-    public void setIdSecretaria(Long idSecretaria) {
-        this.idSecretaria = idSecretaria;
+    public void setSecretaria(Long idSecretaria) {
+        this.secretaria = idSecretaria;
     }    
 
     @Override

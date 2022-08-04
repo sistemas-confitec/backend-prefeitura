@@ -41,14 +41,14 @@ public class ServicoService {
     }
     
     public List<ServicoDTO> findBySecretaria(Long id) {
-        return repository.findByIdSecretaria_Id(id);
+        return repository.findBySecretaria_Id(id);
     }
 
     @Transactional
     public ServicoDTO insert(TipoServicoResponseDTO dto) {
         Servico entity = new Servico(dto);
-        Secretaria secretaria = repositorySecretaria.findById(dto.getIdSecretaria()).get();
-        entity.setIdSecretaria(secretaria);
+        Secretaria secretaria = repositorySecretaria.findById(dto.getSecretaria()).get();
+        entity.setSecretaria(secretaria);
         repository.save(entity);
         return new ServicoDTO(entity);
     }
@@ -56,12 +56,12 @@ public class ServicoService {
     @Transactional
     public ServicoDTO update(Long id, TipoServicoResponseDTO tipoServico) {
         try {
-            Servico entity = repository.getById(id);
+            Servico entity = repository.findById(id).get();
             entity.setNome(tipoServico.getNome());
             entity.setDescricao(tipoServico.getDescricao());
             
-            Secretaria secretaria = repositorySecretaria.findById(tipoServico.getIdSecretaria()).get();
-            entity.setIdSecretaria(secretaria);
+            Secretaria secretaria = repositorySecretaria.findById(tipoServico.getSecretaria()).get();
+            entity.setSecretaria(secretaria);
             repository.save(entity);
             return new ServicoDTO(entity);
         } catch (EntityNotFoundException e) {

@@ -26,3 +26,32 @@ INSERT INTO tb_usuario(nome, matricula, senha) VALUES ('Usuario 1', '30010','$2a
 INSERT INTO tb_endereco_unidade(lougrado, numero, complemento, bairro, cep, longitude, latitude) VALUES ('Rua tal', '300', 'Perto de algum lugar', 'Bairro jw', '60000-000', '-3.8306615', '-38.5569961')
 
 INSERT INTO tb_unidade_saude(nome, endereco_id) VALUES ('Hospital', '1')
+
+
+
+INSERT INTO tb_menu(nome, role ,descricao) VALUES ('Agendamento de Serviço', 'com.secretaria.agendamento', 'Agendar um serviço com determinada secretaria')
+INSERT INTO tb_menu(nome, role ,descricao) VALUES ('Alvará','com.secretaria.alvará', '')
+INSERT INTO tb_menu(nome, role ,descricao) VALUES ('Certidões','com.secretaria.certidoes', '')
+INSERT INTO tb_menu(nome, role ,descricao) VALUES ('Unidades de Saúde','com.secretaria.unidade_saude', '')
+INSERT INTO tb_menu(nome, role ,descricao) VALUES ('Passaporte de Vacinação','com.secretaria.passaporte_vacinacao', '')
+INSERT INTO tb_menu(nome, role ,descricao) VALUES ('Consulta Médica','com.secretaria.consulta_medica', '')
+INSERT INTO tb_menu(nome, role ,descricao) VALUES ('Participa Cidadão','com.secretaria.participa_cidadao', 'Forum de comentarios de usuario')
+INSERT INTO tb_menu(nome, role ,descricao) VALUES ('Avaliações de Ações','com.secretaria.avaliacoes_acoes', 'Ações que foram feito por serviços de secretaria e foram avaliadas')
+INSERT INTO tb_menu(nome, role ,descricao) VALUES ('PodCasts','com.secretaria.podcasts','')
+INSERT INTO tb_menu(nome, role ,descricao) VALUES ('Ouvidoria','com.secretaria.ouvidoria','')
+INSERT INTO tb_menu(nome, role ,descricao) VALUES ('Vapt Vupt','com.secretaria.vapt_vupt','')
+INSERT INTO tb_menu(nome, role ,descricao) VALUES ('Portal Oficial','com.secretaria.portal_oficial','')
+
+
+INSERT INTO tb_secretaria_menu(id_secretaria, id_menu) VALUES (1, 1) 
+INSERT INTO tb_secretaria_menu(id_secretaria, id_menu) VALUES (1, 2) 
+INSERT INTO tb_secretaria_menu(id_secretaria, id_menu) VALUES (1, 3) 
+INSERT INTO tb_secretaria_menu(id_secretaria, id_menu) VALUES (1, 8) 
+INSERT INTO tb_secretaria_menu(id_secretaria, id_menu) VALUES (2, 1) 
+INSERT INTO tb_secretaria_menu(id_secretaria, id_menu) VALUES (2, 4) 
+INSERT INTO tb_secretaria_menu(id_secretaria, id_menu) VALUES (2, 5) 
+INSERT INTO tb_secretaria_menu(id_secretaria, id_menu) VALUES (2, 6) 
+INSERT INTO tb_secretaria_menu(id_secretaria, id_menu) VALUES (3, 1) 
+INSERT INTO tb_secretaria_menu(id_secretaria, id_menu) VALUES (4, 1) 
+INSERT INTO tb_secretaria_menu(id_secretaria, id_menu) VALUES (5, 1) 
+INSERT INTO tb_secretaria_menu(id_secretaria, id_menu) VALUES (6, 1)

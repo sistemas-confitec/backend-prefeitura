@@ -7,10 +7,11 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -35,8 +36,12 @@ public class Secretaria implements Serializable{
     
     
     @JsonIgnore
-    @OneToMany(mappedBy = "idSecretaria")
+    @OneToMany(mappedBy = "secretaria")
     private List<Servico> servicos = new ArrayList<>();
+    
+    
+    @OneToMany(mappedBy = "secretaria")
+    private List<SecretariaMenu> menuDeSecretaria = new ArrayList<>();
     
     
     public Secretaria() {
@@ -52,6 +57,12 @@ public class Secretaria implements Serializable{
         this.nome = dto.getNome();
         this.descricao = dto.getDescricao();
     }    
+    
+    public void adicionarMenus(SecretariaMenu menu){
+        menu.setSecretaria(this);
+        this.menuDeSecretaria.add(menu);
+    }
+    
 
     public Long getId() {
         return id;

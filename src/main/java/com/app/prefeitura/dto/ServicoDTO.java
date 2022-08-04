@@ -1,6 +1,5 @@
 package com.app.prefeitura.dto;
 
-import com.app.prefeitura.entities.Secretaria;
 import com.app.prefeitura.entities.Servico;
 import java.io.Serializable;
 import java.util.Objects;
@@ -14,7 +13,7 @@ public class ServicoDTO implements Serializable {
     private Long id;
     private String nome;
     private String descricao;
-    private Long idSecretaria;
+    private Long secretaria;
     
     public ServicoDTO() {
     }
@@ -28,7 +27,7 @@ public class ServicoDTO implements Serializable {
         this.id = entity.getId();
         this.nome = entity.getNome();
         this.descricao = entity.getDescricao();
-        this.idSecretaria = entity.getIdSecretaria().getId();
+        this.secretaria = entity.getSecretaria().getId();
     }
 
     public Long getId() {
@@ -43,8 +42,8 @@ public class ServicoDTO implements Serializable {
         return descricao;
     }
 
-    public Long getIdSecretaria() {
-        return idSecretaria;
+    public Long getSecretaria() {
+        return secretaria;
     }
 
     @Override
