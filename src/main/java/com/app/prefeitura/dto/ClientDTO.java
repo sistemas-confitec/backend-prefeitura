@@ -3,7 +3,7 @@ package com.app.prefeitura.dto;
 import java.io.Serializable;
 import java.time.Instant;
 
-import com.app.prefeitura.entities.Client;
+import com.app.prefeitura.entities.Cliente;
 
 public class ClientDTO implements Serializable {
 	private static final long serialVersionUID = 1L;
@@ -20,9 +20,9 @@ public class ClientDTO implements Serializable {
 		this.name = name;
 	}
 
-	public ClientDTO(Client entity) {
+	public ClientDTO(Cliente entity) {
 		this.id = entity.getId();
-		this.name = entity.getName();
+		this.name = entity.getNome();
 	}
 
 	public Long getId() {

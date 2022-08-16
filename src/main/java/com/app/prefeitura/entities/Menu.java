@@ -16,7 +16,7 @@ import javax.persistence.Table;
  * @author Robson
  */
 @Entity
-@Table(name = "tb_menu")
+@Table(name = "menu")
 public class Menu implements Serializable {
 
     @Id

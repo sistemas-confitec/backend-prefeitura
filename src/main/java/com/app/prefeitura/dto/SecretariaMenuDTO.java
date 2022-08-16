@@ -9,6 +9,7 @@ import com.app.prefeitura.entities.Secretaria;
 import com.app.prefeitura.entities.SecretariaMenu;
 import java.util.ArrayList;
 import java.util.List;
+import org.modelmapper.ModelMapper;
 
 /**
  *
@@ -52,4 +53,9 @@ public class SecretariaMenuDTO {
         this.menus = menus;
     }
 
+     public SecretariaMenu toEntity() {
+        ModelMapper mapper = new ModelMapper();
+        return mapper.map(this, SecretariaMenu.class);
+    }
+    
 }

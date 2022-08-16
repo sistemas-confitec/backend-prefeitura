@@ -14,4 +14,6 @@ public interface SecretariaMenuRepository extends JpaRepository<SecretariaMenu, 
 
     public List<SecretariaMenu> findBySecretariaId(Long id);
     
+    
+    
 }

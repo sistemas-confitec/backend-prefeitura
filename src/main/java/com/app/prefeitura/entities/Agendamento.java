@@ -16,7 +16,7 @@ import javax.persistence.Table;
  * @author Robson
  */
 @Entity
-@Table(name = "tb_agendamento")
+@Table(name = "agendamento")
 public class Agendamento implements Serializable{
     
     private static final long serialVerionUID = 1L;

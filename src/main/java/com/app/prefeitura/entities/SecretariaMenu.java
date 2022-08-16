@@ -1,5 +1,6 @@
 package com.app.prefeitura.entities;
 
+import com.app.prefeitura.dto.SecretariaMenuDTO;
 import java.io.Serializable;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -8,13 +9,14 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import org.modelmapper.ModelMapper;
 
 /**
  *
  * @author Robson
  */
 @Entity
-@Table(name = "tb_secretaria_menu")
+@Table(name = "secretaria_menu")
 public class SecretariaMenu implements Serializable{
     
     @Id
@@ -78,6 +80,9 @@ public class SecretariaMenu implements Serializable{
         return this.id == other.id;
     }
     
-    
+    public SecretariaMenuDTO toDTO(){
+        ModelMapper mapper = new ModelMapper();
+        return mapper.map(this, SecretariaMenuDTO.class);
+    }
     
 }

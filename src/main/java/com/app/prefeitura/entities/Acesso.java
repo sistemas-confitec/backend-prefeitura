@@ -15,7 +15,7 @@ import org.springframework.security.core.GrantedAuthority;
  *
  * @author Robson
  */
-@Entity(name = "tb_acesso")
+@Entity(name = "acesso")
 public class Acesso implements GrantedAuthority{
     
     @Id

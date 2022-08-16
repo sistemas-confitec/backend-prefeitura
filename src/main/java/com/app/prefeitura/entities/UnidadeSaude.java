@@ -14,7 +14,7 @@ import javax.persistence.Table;
  * @author Robson
  */
 @Entity
-@Table(name = "tb_unidade_saude")
+@Table(name = "unidade_saude")
 public class UnidadeSaude implements Serializable{
     
     @Id
@@ -23,7 +23,7 @@ public class UnidadeSaude implements Serializable{
     private String nome;
     
     @OneToOne
-    @JoinColumn(name = "endereco_id", referencedColumnName = "id")
+    @JoinColumn(name = "id_endereco", referencedColumnName = "id")
     private Endereco endereco;
 
     public UnidadeSaude() {
