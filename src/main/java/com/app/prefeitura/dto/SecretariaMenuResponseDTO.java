@@ -15,20 +15,20 @@ import org.modelmapper.ModelMapper;
  *
  * @author Robson
  */
-public class SecretariaMenuDTO {
+public class SecretariaMenuResponseDTO {
 
     private Secretaria secretaria;
     private List<Menu> menus = new ArrayList<>();
 
-    public SecretariaMenuDTO() {
+    public SecretariaMenuResponseDTO() {
     }
     
-    public SecretariaMenuDTO(Secretaria secretaria, List<Menu> menus) {
+    public SecretariaMenuResponseDTO(Secretaria secretaria, List<Menu> menus) {
         this.secretaria = secretaria;
         this.menus = menus;
     }
 
-    public SecretariaMenuDTO(SecretariaMenu menu) {
+    public SecretariaMenuResponseDTO(SecretariaMenu menu) {
         this.secretaria = menu.getSecretaria();
         this.menus.add(menu.getMenu());
     }

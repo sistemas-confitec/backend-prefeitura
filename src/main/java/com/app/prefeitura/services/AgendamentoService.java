@@ -1,7 +1,7 @@
 package com.app.prefeitura.services;
 
+import com.app.prefeitura.dto.AgendamentoRequestDTO;
 import com.app.prefeitura.dto.AgendamentoResponseDTO;
-import com.app.prefeitura.dto.AgendamentoDTO;
 import com.app.prefeitura.entities.Agendamento;
 import com.app.prefeitura.entities.Secretaria;
 import com.app.prefeitura.entities.Servico;
@@ -37,20 +37,20 @@ public class AgendamentoService {
     private ServicoRepository repositoryServico;
 
     @Transactional(readOnly = true)
-    public Page<AgendamentoDTO> findAllPaged(PageRequest pageResquest) {
+    public Page<AgendamentoResponseDTO> findAllPaged(PageRequest pageResquest) {
         Page<Agendamento> list = repository.findAll(pageResquest);
-        return list.map(AgendamentoDTO::new);
+        return list.map(AgendamentoResponseDTO::new);
     }
 
     @Transactional(readOnly = true)
-    public AgendamentoDTO findById(Long id) {
+    public AgendamentoResponseDTO findById(Long id) {
         Optional<Agendamento> obj = repository.findById(id);
         Agendamento entity = obj.orElseThrow(() -> new ResourceNotFoundException("Entity not found"));
-        return new AgendamentoDTO(entity);
+        return new AgendamentoResponseDTO(entity);
     }
 
     @Transactional
-    public AgendamentoDTO insert(AgendamentoResponseDTO dto) {
+    public AgendamentoResponseDTO insert(AgendamentoRequestDTO dto) {
         Agendamento entity = new Agendamento();
 
         Secretaria secretaria = repositorySecretaria.findById(dto.getSecretaria()).get();
@@ -61,11 +61,11 @@ public class AgendamentoService {
         entity.setData(dto.getData());
         entity.setHora(dto.getHora());
         entity = repository.save(entity);
-        return new AgendamentoDTO(entity);
+        return new AgendamentoResponseDTO(entity);
     }
 
     @Transactional
-    public AgendamentoDTO update(Long id, AgendamentoResponseDTO dto) {
+    public AgendamentoResponseDTO update(Long id, AgendamentoRequestDTO dto) {
         try {
             Agendamento entity = repository.findById(id).get();
 
@@ -80,7 +80,7 @@ public class AgendamentoService {
 
             entity = repository.save(entity);
             
-            return new AgendamentoDTO(entity);
+            return new AgendamentoResponseDTO(entity);
             
         } catch (EntityNotFoundException e) {
             throw new ResourceNotFoundException("Id not found" + id);

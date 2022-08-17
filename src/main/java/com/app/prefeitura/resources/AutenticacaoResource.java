@@ -6,7 +6,7 @@
 package com.app.prefeitura.resources;
 
 import com.app.prefeitura.config.TokenService;
-import com.app.prefeitura.dto.TokenDTO;
+import com.app.prefeitura.dto.TokenResponseDTO;
 import com.app.prefeitura.form.LoginForm;
 import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -41,7 +41,7 @@ public class AutenticacaoResource {
         try{
             Authentication authentication = authManager.authenticate(dadosLogin);
             String token = tokenService.gerarToken(authentication);
-            return ResponseEntity.ok(new TokenDTO(token, "Bearer"));
+            return ResponseEntity.ok(new TokenResponseDTO(token, "Bearer"));
         } catch (AuthenticationException e){
             return ResponseEntity.badRequest().build();
         }

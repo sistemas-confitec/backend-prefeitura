@@ -1,6 +1,6 @@
- package com.app.prefeitura.dto;
+package com.app.prefeitura.dto;
 
-import com.app.prefeitura.entities.Secretaria;
+import com.app.prefeitura.entities.Servico;
 import java.io.Serializable;
 import java.util.Objects;
 
@@ -8,25 +8,26 @@ import java.util.Objects;
  *
  * @author Robson
  */
-public class SecretariaDTO implements Serializable {
+public class ServicoResponseDTO implements Serializable {
 
     private Long id;
     private String nome;
     private String descricao;
-
-    public SecretariaDTO() {
+    private Long secretaria;
+    
+    public ServicoResponseDTO() {
     }
 
-    public SecretariaDTO(Long id, String nome, String descricao) {
+    public ServicoResponseDTO(Long id, String nome) {
         this.id = id;
         this.nome = nome;
-        this.descricao = descricao;
     }
 
-    public SecretariaDTO(Secretaria secretaria) {
-        this.id = secretaria.getId();
-        this.nome = secretaria.getNome();
-        this.descricao =  secretaria.getDescricao();
+    public ServicoResponseDTO(Servico entity) {
+        this.id = entity.getId();
+        this.nome = entity.getNome();
+        this.descricao = entity.getDescricao();
+        this.secretaria = entity.getSecretaria().getId();
     }
 
     public Long getId() {
@@ -41,6 +42,9 @@ public class SecretariaDTO implements Serializable {
         return descricao;
     }
 
+    public Long getSecretaria() {
+        return secretaria;
+    }
 
     @Override
     public int hashCode() {
@@ -60,7 +64,7 @@ public class SecretariaDTO implements Serializable {
         if (getClass() != obj.getClass()) {
             return false;
         }
-        final SecretariaDTO other = (SecretariaDTO) obj;
+        final ServicoResponseDTO other = (ServicoResponseDTO) obj;
         return Objects.equals(this.id, other.id);
     }
 

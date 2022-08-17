@@ -1,7 +1,7 @@
 package com.app.prefeitura.resources;
 
+import com.app.prefeitura.dto.UnidadeSaudeRequestDTO;
 import com.app.prefeitura.dto.UnidadeSaudeResponseDTO;
-import com.app.prefeitura.dto.UnidadeSaudeDTO;
 import com.app.prefeitura.entities.UnidadeSaude;
 import com.app.prefeitura.services.PostoSaudeService;
 import java.io.Serializable;
@@ -43,21 +43,21 @@ public class PostoSaudeResouce implements Serializable {
     }
 
     @PostMapping
-    public ResponseEntity<UnidadeSaudeDTO> insert(@RequestBody UnidadeSaudeResponseDTO dtoResponse) {
-        UnidadeSaudeDTO dto = service.insert(dtoResponse);
+    public ResponseEntity<UnidadeSaudeResponseDTO> insert(@RequestBody UnidadeSaudeRequestDTO dtoResponse) {
+        UnidadeSaudeResponseDTO dto = service.insert(dtoResponse);
         URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(dto.getId()).toUri();
 
         return ResponseEntity.created(uri).body(dto);
     }
 
     @PutMapping(value = "/{id}")
-    public ResponseEntity<UnidadeSaudeDTO> update(@PathVariable Long id, @RequestBody UnidadeSaudeResponseDTO dtoResponse) {
-        UnidadeSaudeDTO dto = service.update(id, dtoResponse);
+    public ResponseEntity<UnidadeSaudeResponseDTO> update(@PathVariable Long id, @RequestBody UnidadeSaudeRequestDTO dtoResponse) {
+        UnidadeSaudeResponseDTO dto = service.update(id, dtoResponse);
         return ResponseEntity.ok().body(dto);
     }
 
     @DeleteMapping(value = "/{id}")
-    public ResponseEntity<UnidadeSaudeDTO> delete(@PathVariable Long id) {
+    public ResponseEntity<UnidadeSaudeResponseDTO> delete(@PathVariable Long id) {
         service.delete(id);
         return ResponseEntity.noContent().build();
     }

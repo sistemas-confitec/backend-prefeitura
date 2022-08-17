@@ -1,6 +1,6 @@
 package com.app.prefeitura.services;
 
-import com.app.prefeitura.dto.ServicoDTO;
+import com.app.prefeitura.dto.ServicoResponseDTO;
 import com.app.prefeitura.dto.TipoServicoResponseDTO;
 import com.app.prefeitura.entities.Secretaria;
 import com.app.prefeitura.entities.Servico;
@@ -40,21 +40,21 @@ public class ServicoService {
         return entity;
     }
     
-    public List<ServicoDTO> findBySecretaria(Long id) {
+    public List<ServicoResponseDTO> findBySecretaria(Long id) {
         return repository.findBySecretaria_Id(id);
     }
 
     @Transactional
-    public ServicoDTO insert(TipoServicoResponseDTO dto) {
+    public ServicoResponseDTO insert(TipoServicoResponseDTO dto) {
         Servico entity = new Servico(dto);
         Secretaria secretaria = repositorySecretaria.findById(dto.getSecretaria()).get();
         entity.setSecretaria(secretaria);
         repository.save(entity);
-        return new ServicoDTO(entity);
+        return new ServicoResponseDTO(entity);
     }
 
     @Transactional
-    public ServicoDTO update(Long id, TipoServicoResponseDTO tipoServico) {
+    public ServicoResponseDTO update(Long id, TipoServicoResponseDTO tipoServico) {
         try {
             Servico entity = repository.findById(id).get();
             entity.setNome(tipoServico.getNome());
@@ -63,7 +63,7 @@ public class ServicoService {
             Secretaria secretaria = repositorySecretaria.findById(tipoServico.getSecretaria()).get();
             entity.setSecretaria(secretaria);
             repository.save(entity);
-            return new ServicoDTO(entity);
+            return new ServicoResponseDTO(entity);
         } catch (EntityNotFoundException e) {
             throw new ResourceNotFoundException("Id not found " + id);
         }

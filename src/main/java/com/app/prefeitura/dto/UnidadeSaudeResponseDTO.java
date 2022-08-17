@@ -1,5 +1,6 @@
 package com.app.prefeitura.dto;
 
+import com.app.prefeitura.entities.Endereco;
 import com.app.prefeitura.entities.UnidadeSaude;
 import java.io.Serializable;
 
@@ -13,40 +14,21 @@ public class UnidadeSaudeResponseDTO implements Serializable {
     private Long id;
     private String nome;
     // Endereco
-    private String lougrado;
-    private String numero;
-    private String complemento;
-    private String bairro;
-    private String cep;
-    
-    private String longitude;
-    private String latitude;
+    private Endereco endereco;
 
     public UnidadeSaudeResponseDTO() {
     }
 
-    public UnidadeSaudeResponseDTO(Long id, String nome, String lougrado, String numero, String complemento, String bairro, String cep, String longitude, String latitude) {
+    public UnidadeSaudeResponseDTO(Long id, String nome, Endereco endereco) {
         this.id = id;
         this.nome = nome;
-        this.lougrado = lougrado;
-        this.numero = numero;
-        this.complemento = complemento;
-        this.bairro = bairro;
-        this.cep = cep;
-        this.longitude = longitude;
-        this.latitude = latitude;
+        this.endereco = endereco;
     }
-
+    
     public UnidadeSaudeResponseDTO(UnidadeSaude entity) {
         this.id = entity.getId();
         this.nome = entity.getNome();
-        this.lougrado = entity.getEndereco().getLougrado();
-        this.numero = entity.getEndereco().getNumero();
-        this.complemento = entity.getEndereco().getComplemento();
-        this.bairro = entity.getEndereco().getBairro();
-        this.cep = entity.getEndereco().getCep();
-        this.longitude = entity.getEndereco().getLougrado();
-        this.latitude = entity.getEndereco().getLatitude();
+        this.endereco = entity.getEndereco();
     }
 
     public Long getId() {
@@ -65,62 +47,12 @@ public class UnidadeSaudeResponseDTO implements Serializable {
         this.nome = nome;
     }
 
-    public String getLougrado() {
-        return lougrado;
+    public Endereco getEndereco() {
+        return endereco;
     }
 
-    public void setLougrado(String lougrado) {
-        this.lougrado = lougrado;
+    public void setEndereco(Endereco endereco) {
+        this.endereco = endereco;
     }
-
-    public String getNumero() {
-        return numero;
-    }
-
-    public void setNumero(String numero) {
-        this.numero = numero;
-    }
-
-    public String getComplemento() {
-        return complemento;
-    }
-
-    public void setComplemento(String complemento) {
-        this.complemento = complemento;
-    }
-
-    public String getBairro() {
-        return bairro;
-    }
-
-    public void setBairro(String bairro) {
-        this.bairro = bairro;
-    }
-
-    public String getCep() {
-        return cep;
-    }
-
-    public void setCep(String cep) {
-        this.cep = cep;
-    }
-
-    public String getLongitude() {
-        return longitude;
-    }
-
-    public void setLongitude(String longitude) {
-        this.longitude = longitude;
-    }
-
-    public String getLatitude() {
-        return latitude;
-    }
-
-    public void setLatitude(String latitude) {
-        this.latitude = latitude;
-    }
-    
-    
 
 }

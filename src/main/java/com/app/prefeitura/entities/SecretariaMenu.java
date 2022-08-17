@@ -1,6 +1,6 @@
 package com.app.prefeitura.entities;
 
-import com.app.prefeitura.dto.SecretariaMenuDTO;
+import com.app.prefeitura.dto.SecretariaMenuResponseDTO;
 import java.io.Serializable;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -80,9 +80,9 @@ public class SecretariaMenu implements Serializable{
         return this.id == other.id;
     }
     
-    public SecretariaMenuDTO toDTO(){
+    public SecretariaMenuResponseDTO toDTO(){
         ModelMapper mapper = new ModelMapper();
-        return mapper.map(this, SecretariaMenuDTO.class);
+        return mapper.map(this, SecretariaMenuResponseDTO.class);
     }
     
 }

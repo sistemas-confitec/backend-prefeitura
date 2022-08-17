@@ -1,6 +1,6 @@
 package com.app.prefeitura.services;
 
-import com.app.prefeitura.dto.SecretariaMenuDTO;
+import com.app.prefeitura.dto.SecretariaMenuResponseDTO;
 import com.app.prefeitura.dto.SecretariaMenuRequestDTO;
 import com.app.prefeitura.entities.Menu;
 import com.app.prefeitura.entities.Secretaria;
@@ -8,10 +8,15 @@ import com.app.prefeitura.entities.SecretariaMenu;
 import com.app.prefeitura.repositories.MenuRepository;
 import com.app.prefeitura.repositories.SecretariaMenuRepository;
 import com.app.prefeitura.repositories.SecretariaRepository;
+import com.app.prefeitura.services.exceptions.DatabaseException;
+import com.app.prefeitura.services.exceptions.ResourceNotFoundException;
 import java.util.ArrayList;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataIntegrityViolationException;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 /**
  *
@@ -29,10 +34,10 @@ public class SecretariaMenuService {
     @Autowired
     private SecretariaRepository secretariaRepository;
 
-    public List<SecretariaMenuDTO> findBySecretariaId(Long id) {
+    public List<SecretariaMenuResponseDTO> findBySecretariaId(Long id) {
         List<SecretariaMenu> list = repository.findBySecretariaId(id);
-        List<SecretariaMenuDTO> listMenus = new ArrayList<>();
-        SecretariaMenuDTO secretariaMenu = new SecretariaMenuDTO();
+        List<SecretariaMenuResponseDTO> listMenus = new ArrayList<>();
+        SecretariaMenuResponseDTO secretariaMenu = new SecretariaMenuResponseDTO();
 
         secretariaMenu.setSecretaria(list.get(0).getSecretaria());
         list.forEach(obj -> secretariaMenu.adicionarMenu(obj.getMenu()));
@@ -46,6 +51,7 @@ public class SecretariaMenuService {
         return menus;
     }
 
+    @Transactional
     public SecretariaMenu save(SecretariaMenuRequestDTO form) {
 
         List<Menu> menus = consultarMenuRestante(form.getSecretariaId());
@@ -63,5 +69,17 @@ public class SecretariaMenuService {
         
         return null;
     }
-
+    
+    @Transactional
+    public void delete(Long idSecretaria, Long idMenu){
+        try{
+            Long id = repository.consultarMenuDaSecretaria(idSecretaria, idMenu);
+            repository.deleteById(id);
+        } catch (EmptyResultDataAccessException e){
+            throw new ResourceNotFoundException("If not found " + idSecretaria);
+        } catch (DataIntegrityViolationException e){
+            throw new DatabaseException("Integrity violation");
+        }
+    }
+    
 }

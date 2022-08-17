@@ -5,7 +5,7 @@
  */
 package com.app.prefeitura.resources;
 
-import com.app.prefeitura.dto.SecretariaDTO;
+import com.app.prefeitura.dto.SecretariaResponseDTO;
 import com.app.prefeitura.entities.Secretaria;
 import com.app.prefeitura.services.SecretariaService;
 import java.net.URI;
@@ -46,7 +46,7 @@ public class SecretariaResouce {
     }
     
     @PostMapping()
-    public ResponseEntity<SecretariaDTO> insert(@RequestBody SecretariaDTO dto){
+    public ResponseEntity<SecretariaResponseDTO> insert(@RequestBody SecretariaResponseDTO dto){
         dto = service.insert(dto);
         URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(dto.getId()).toUri();
     
@@ -54,13 +54,13 @@ public class SecretariaResouce {
     }
     
     @PutMapping(value = "/{id}")
-    public ResponseEntity<SecretariaDTO> update(@PathVariable Long id, @RequestBody SecretariaDTO dto) {
+    public ResponseEntity<SecretariaResponseDTO> update(@PathVariable Long id, @RequestBody SecretariaResponseDTO dto) {
         dto = service.update(id, dto);
         return ResponseEntity.ok().body(dto);
     }
     
     @DeleteMapping(value = "/{id}")
-    public ResponseEntity<SecretariaDTO> delete(@PathVariable Long id) {
+    public ResponseEntity<SecretariaResponseDTO> delete(@PathVariable Long id) {
         service.delete(id);
         return ResponseEntity.noContent().build();
     }

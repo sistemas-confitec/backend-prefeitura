@@ -14,8 +14,8 @@ import java.time.LocalTime;
 public class AgendamentoResponseDTO implements Serializable{
 
     private Long id;
-    private Long secretaria;
-    private Long servico;
+    private Secretaria secretaria;
+    private Servico servico;
     private LocalDate data;
     private LocalTime hora;
 
@@ -24,16 +24,16 @@ public class AgendamentoResponseDTO implements Serializable{
 
     public AgendamentoResponseDTO(Long id, Secretaria secretaria, Servico tipoServico, LocalDate data, LocalTime hora) {
         this.id = id;
-        this.secretaria = secretaria.getId();
-        this.servico = tipoServico.getId();
+        this.secretaria = secretaria;
+        this.servico = tipoServico;
         this.data = data;
         this.hora = hora;
     }
     
     public AgendamentoResponseDTO(Agendamento entity) {
         this.id = entity.getId();
-        this.secretaria  = entity.getSecretaria().getId();
-        this.servico = entity.getServico().getId();
+        this.secretaria  = entity.getSecretaria();
+        this.servico = entity.getServico();
         this.data = entity.getData();
         this.hora = entity.getHora();
     }
@@ -42,40 +42,22 @@ public class AgendamentoResponseDTO implements Serializable{
         return id;
     }
 
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public Long getSecretaria() {
+    public Secretaria getSecretaria() {
         return secretaria;
     }
 
-    public void setSecretaria(Long secretaria) {
-        this.secretaria = secretaria;
-    }
-
-    public Long getServico() {
+    public Servico getServico() {
         return servico;
-    }
-
-    public void setServico(Long tipoServico) {
-        this.servico = tipoServico;
     }
 
     public LocalDate getData() {
         return data;
     }
 
-    public void setData(LocalDate data) {
-        this.data = data;
-    }
-
     public LocalTime getHora() {
         return hora;
     }
 
-    public void setHora(LocalTime hora) {
-        this.hora = hora;
-    }
+    
     
 }

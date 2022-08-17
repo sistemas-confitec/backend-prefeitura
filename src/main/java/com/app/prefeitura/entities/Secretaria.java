@@ -1,6 +1,6 @@
 package com.app.prefeitura.entities;
 
-import com.app.prefeitura.dto.SecretariaDTO;
+import com.app.prefeitura.dto.SecretariaResponseDTO;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -53,7 +53,7 @@ public class Secretaria implements Serializable{
         this.descricao = descricao;
     }
     
-    public Secretaria(SecretariaDTO dto) {
+    public Secretaria(SecretariaResponseDTO dto) {
         this.nome = dto.getNome();
         this.descricao = dto.getDescricao();
     }    

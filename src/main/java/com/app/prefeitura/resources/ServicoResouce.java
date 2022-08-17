@@ -1,6 +1,6 @@
 package com.app.prefeitura.resources;
 
-import com.app.prefeitura.dto.ServicoDTO;
+import com.app.prefeitura.dto.ServicoResponseDTO;
 import com.app.prefeitura.dto.TipoServicoResponseDTO;
 import com.app.prefeitura.entities.Servico;
 import com.app.prefeitura.services.ServicoService;
@@ -42,26 +42,26 @@ public class ServicoResouce {
     }
     
     @GetMapping(value = "/secretaria/{id}")
-    public ResponseEntity<List<ServicoDTO>> findBySecretaria(@PathVariable Long id){
-        List<ServicoDTO> list = service.findBySecretaria(id);
+    public ResponseEntity<List<ServicoResponseDTO>> findBySecretaria(@PathVariable Long id){
+        List<ServicoResponseDTO> list = service.findBySecretaria(id);
         return ResponseEntity.ok().body(list);
     }
     
     @PostMapping()
-    public ResponseEntity<ServicoDTO> insert(@RequestBody TipoServicoResponseDTO dtoResponse){
-        ServicoDTO dto = service.insert(dtoResponse);
+    public ResponseEntity<ServicoResponseDTO> insert(@RequestBody TipoServicoResponseDTO dtoResponse){
+        ServicoResponseDTO dto = service.insert(dtoResponse);
         URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(dto.getId()).toUri();
         return ResponseEntity.created(uri).body(dto);
     }
     
     @PutMapping(value = "/{id}")
-    public ResponseEntity<ServicoDTO> update(@PathVariable Long id, @RequestBody TipoServicoResponseDTO dtoResponse){
-        ServicoDTO dto = service.update(id, dtoResponse);
+    public ResponseEntity<ServicoResponseDTO> update(@PathVariable Long id, @RequestBody TipoServicoResponseDTO dtoResponse){
+        ServicoResponseDTO dto = service.update(id, dtoResponse);
         return ResponseEntity.ok().body(dto);
     }
 
     @DeleteMapping(value = "/{id}")
-    public ResponseEntity<ServicoDTO> delete(@PathVariable Long id){
+    public ResponseEntity<ServicoResponseDTO> delete(@PathVariable Long id){
         service.delete(id);
         return ResponseEntity.noContent().build();
     }

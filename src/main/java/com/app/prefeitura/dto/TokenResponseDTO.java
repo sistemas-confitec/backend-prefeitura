@@ -9,12 +9,12 @@ package com.app.prefeitura.dto;
  *
  * @author Robson
  */
-public class TokenDTO {
+public class TokenResponseDTO {
     
     private String token;
     private String tipo;
 
-    public TokenDTO(String token, String tipo) {
+    public TokenResponseDTO(String token, String tipo) {
         this.token = token;
         this.tipo = tipo;
     }

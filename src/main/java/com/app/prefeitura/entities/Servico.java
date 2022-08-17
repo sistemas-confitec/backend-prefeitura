@@ -1,6 +1,6 @@
 package com.app.prefeitura.entities;
 
-import com.app.prefeitura.dto.ServicoDTO;
+import com.app.prefeitura.dto.ServicoResponseDTO;
 import com.app.prefeitura.dto.TipoServicoResponseDTO;
 import java.io.Serializable;
 import java.util.Objects;
@@ -40,7 +40,7 @@ public class Servico implements Serializable {
         this.nome = nome;
     }
 
-    public Servico(ServicoDTO dto) {
+    public Servico(ServicoResponseDTO dto) {
         this.nome = dto.getNome();
     }
 

@@ -1,7 +1,7 @@
 package com.app.prefeitura.services;
 
+import com.app.prefeitura.dto.UnidadeSaudeRequestDTO;
 import com.app.prefeitura.dto.UnidadeSaudeResponseDTO;
-import com.app.prefeitura.dto.UnidadeSaudeDTO;
 import com.app.prefeitura.entities.Endereco;
 import com.app.prefeitura.entities.UnidadeSaude;
 import com.app.prefeitura.repositories.EnderecoRepository;
@@ -41,7 +41,7 @@ public class PostoSaudeService {
     }
 
     @Transactional
-    public UnidadeSaudeDTO insert(UnidadeSaudeResponseDTO dto) {
+    public UnidadeSaudeResponseDTO insert(UnidadeSaudeRequestDTO dto) {
         Endereco entityEndereco = new Endereco();
         entityEndereco.setLougrado(dto.getLougrado());
         entityEndereco.setNumero(dto.getNumero());
@@ -57,11 +57,11 @@ public class PostoSaudeService {
         entity.setNome(dto.getNome());
         entity.setEndereco(entityEndereco);
         repository.save(entity);
-        return new UnidadeSaudeDTO(entity);
+        return new UnidadeSaudeResponseDTO(entity);
     }
 
     @Transactional
-    public UnidadeSaudeDTO update(Long id, UnidadeSaudeResponseDTO dto) {
+    public UnidadeSaudeResponseDTO update(Long id, UnidadeSaudeRequestDTO dto) {
         try {
             UnidadeSaude entity = repository.findById(id).get();
             entity.setNome(dto.getNome());
@@ -72,7 +72,7 @@ public class PostoSaudeService {
             entity.getEndereco().setCep(dto.getCep());
             entity.getEndereco().setLongitude(dto.getLongitude());
             entity.getEndereco().setLatitude(dto.getLatitude());
-            return new UnidadeSaudeDTO(entity);
+            return new UnidadeSaudeResponseDTO(entity);
         } catch (EntityNotFoundException e) {
             throw new ResourceNotFoundException("Id not found " + id);
         }
